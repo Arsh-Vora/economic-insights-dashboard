@@ -19,7 +19,6 @@ Build a reusable, testable Python module (`src/transform.py`) that takes the pro
 ### 2. Deliverables
 
 *   `src/transform.py`: A Python module containing the transformation functions.
-*   `tests/test_transform.py`: Unit tests for the transformation logic using `pytest`.
 *   `docs/feature-02-transform.md`: This implementation plan.
 *   `docs/data-dictionary.md`: **Updated** with new `_z` and engineered columns.
 *   `README.md`: **Updated** with a new "Transform Layer" section explaining the purpose of `src/transform.py`.
@@ -142,8 +141,6 @@ The output DataFrame will contain all input columns plus the following additions
 ### 8. Definition of Done
 
 *   [ ] `src/transform.py` is created with the specified functions (`forward_fill_per_country`, `standardize_features`, `add_engineered_features`, `build_dataset`).
-*   [ ] `tests/test_transform.py` is created with meaningful unit tests for the core logic.
-*   [ ] All tests pass locally (`pytest`).
 *   [ ] `README.md` is updated to describe the new transform capabilities.
 *   [ ] `docs/data-dictionary.md` is updated to include definitions for all new columns.
 *   [ ] The code is well-documented with type hints and docstrings.
@@ -157,7 +154,6 @@ Files created or modified in this feature:
 
 ```
 src/transform.py
-tests/test_transform.py
 docs/feature-02-transform.md
 docs/data-dictionary.md
 README.md
@@ -169,7 +165,6 @@ README.md
 
 *   `feat(transform): add forward-fill and z-score standardization`
 *   `feat(transform): implement misery index and debt-to-growth engineered features`
-*   `test(transform): add unit tests for ffill and standardization logic`
 *   `docs(readme): add section on data transformation layer`
 
 ---
@@ -184,11 +179,9 @@ This PR introduces a new module, `src/transform.py`, responsible for preparing t
 2.  **Z-Score Standardization:** Normalizes key indicators for historical comparison within each country.
 3.  **Feature Engineering:** Adds composite metrics like the Misery Index.
 
-This reusable layer will be directly consumed by the plotting utilities and the Streamlit application. All logic is covered by unit tests in `tests/test_transform.py`.
+This reusable layer will be directly consumed by the plotting utilities and the Streamlit application.
 
 **Checklist:**
 *   [ ] `src/transform.py` created and documented.
-*   [ ] `tests/test_transform.py` created.
-*   [ ] Tests pass locally.
 *   [ ] `README.md` and `docs/data-dictionary.md` have been updated.
 *   [ ] The code adheres to project styling and quality standards.
