@@ -23,3 +23,12 @@ This project is a Streamlit dashboard for visualizing key economic indicators fr
     **Outputs:**
     - `data/raw/worldbank_raw.csv`
     - `data/processed.csv`
+
+## Data Transformation Layer
+
+The `src/transform.py` module is responsible for cleaning, standardizing, and enriching the processed data to make it suitable for analysis and visualization. It acts as a bridge between the raw, processed data and the final application.
+
+Key transformations include:
+- **Forward Filling:** Missing data points for each country are filled using the last known value for that specific country, preventing data leakage across different nations.
+- **Z-Score Standardization:** Key economic indicators are normalized on a per-country basis. This allows for comparing a data point to its historical average for that country.
+- **Feature Engineering:** New, insightful metrics such as the "Misery Index" (Unemployment + Inflation) and "Debt-to-Growth Ratio" are created to provide deeper economic insights.
