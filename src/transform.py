@@ -25,7 +25,7 @@ def standardize_features(df: pd.DataFrame, metrics: list) -> pd.DataFrame:
     df_copy = df.copy()
     for metric in metrics:
         group_transform = df_copy.groupby('countryiso3code')[metric].transform(
-            lambda x: (x - x.mean()) / x.std()
+            lambda x: np.where(x.std() != 0, (x - x.mean()) / x.std(), np.nan)
         )
         df_copy[f"{metric}_z"] = group_transform
     return df_copy
@@ -39,10 +39,8 @@ def add_engineered_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     df_copy = df.copy()
     df_copy['misery_index'] = df_copy['unemployment_rate'] + df_copy['inflation_cpi']
-    with np.errstate(divide='ignore', invalid='ignore'):
-        ratio = df_copy['gov_debt_pct_gdp'] / df_copy['gdp_growth']
-    df_copy['debt_to_growth_ratio'] = ratio.replace([np.inf, -np.inf], np.nan)
-    df_copy['external_balance_health'] = df_copy['current_account_pct_gdp']
+    df_copy['debt_to_growth_ratio'] = np.where(df_copy['gdp_growth'] != 0, df_copy['gov_debt_pct_gdp'] / df_copy['gdp_growth'], np.nan)
+    df_copy['current_account_balance'] = df_copy['current_account_pct_gdp']
     
     return df_copy
 
