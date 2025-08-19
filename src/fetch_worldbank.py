@@ -48,12 +48,18 @@ def fetch_indicator(country_code: str, indicator: str) -> pd.DataFrame:
     data = response.json()
 
    
-    if len(data) < 2 or not data[1]:
+    if not data or len(data) < 2 or not isinstance(data[1], list) or not data[1]:
+        print(f"  -> Skipping for {country_code}/{indicator} due to empty or invalid API response.")
         return None
 
     df = pd.json_normalize(data[1])
+
+    required_cols = {'country.value', 'countryiso3code', 'date', 'value', 'indicator.id'}
+    if not required_cols.issubset(df.columns):
+        print(f"  -> Skipping for {country_code}/{indicator} due to missing columns in API response.", file=sys.stderr)
+        return None
     
-    df = df[['country.value', 'countryiso3code', 'date', 'value', 'indicator.id']]
+    df = df[list(required_cols)]
     df.rename(columns={'indicator.id': 'indicator'}, inplace=True)
     
     return df
@@ -111,7 +117,8 @@ def main():
     processed_df = processed_df.pivot_table(
         index=['country.value', 'countryiso3code', 'date'],
         columns='indicator',
-        values='value'
+        values='value',
+        aggfunc='mean'
     ).reset_index()
 
     processed_df.sort_values(by=["countryiso3code", "date"], inplace=True)
