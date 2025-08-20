@@ -27,6 +27,6 @@ def generate_time_series_plot(df: pd.DataFrame, metric: str, title: str):
     fig = px.line(df_sorted, x='date', y=metric, color='country.value', title=title)
     fig.update_layout(
         xaxis_title="Date",
-        yaxis_title=metric.replace('_', ' ').title() # Basic formatting for y-axis title
+        yaxis_title=metric.replace('_', ' ').title().title()
     )
     return fig
