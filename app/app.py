@@ -38,11 +38,12 @@ st.sidebar.markdown("---")
 st.sidebar.header("**Controls**")
 
 # Country Multi-select
-all_countries = sorted(df['country.value'].unique().tolist())
+all_countries = sorted(df['country.value'].unique().tolist() if not df.empty else [])
+default_countries = os.environ.get("DEFAULT_COUNTRIES", "United States,China,Germany").split(",")
 selected_countries = st.sidebar.multiselect(
     "Select Countries:",
     options=all_countries,
-    default=["United States", "China", "Germany"] # Default selection
+    default=[country.strip() for country in default_countries if country.strip() in all_countries]
 )
 
 # Metric Select Box
@@ -73,7 +74,10 @@ else:
     # Generate and display plot
     plot_title = f"{selected_metric_display_name} for Selected Countries"
     fig = plots.generate_time_series_plot(filtered_df, selected_metric_column_name, plot_title)
-    st.plotly_chart(fig, use_container_width=True)
+    if fig is None or len(fig.data) == 0:
+        st.info("No data available for the selected criteria.")
+    else:
+        st.plotly_chart(fig, use_container_width=True)
 
     # Data Preview Expander
     with st.expander("▼ Show Plotted Data"):
