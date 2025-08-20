@@ -1,16 +1,5 @@
-Of course. Here is the corrected document with the fixed Mermaid diagram and re-numbered section titles.
-
-The primary issue in the Mermaid diagram was the use of parentheses `()` within node labels, which is invalid syntax. These have been removed. The section numbering has also been corrected to be sequential.
-
----
 
 ## Feature 02 — Transform & Feature Engineering
-
-**Branch:** `feature/transform-pipeline` → PR into `dev`
-**Owner:** Arsh
-**Status:** Draft → In Progress → Review → Merged
-
----
 
 ### 1. Goal
 

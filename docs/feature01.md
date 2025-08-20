@@ -1,10 +1,4 @@
-
-
 # Feature 01 — Data Fetch Pipeline (World Bank API)
-
-**Branch:** `feature/data-fetch` → PR into `dev`
-**Owner:** Arsh
-**Status:** Draft → In Progress → Review → Merged
 
 ## 1) Goal & Outcome
 
