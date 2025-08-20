@@ -33,6 +33,26 @@ Key transformations include:
 - **Z-Score Standardization:** Key economic indicators are normalized on a per-country basis. This allows for comparing a data point to its historical average for that country.
 - **Feature Engineering:** New, insightful metrics such as the "Misery Index" (Unemployment + Inflation) and "Debt-to-Growth Ratio" are created to provide deeper economic insights.
 
+### Running with Docker
+
+To run the application using Docker, ensuring a consistent development environment:
+
+1.  **Build the Docker image and start the containers:**
+    ```bash
+    docker-compose up --build
+    ```
+    This command will build the Docker image (if not already built) and start the data fetcher and the Streamlit application in separate containers.
+
+2.  **Access the application:**
+    The application will be available at `http://localhost:8501`.
+
+**Note:** If port 8501 is in use locally, you may need to adjust the port mapping in the `docker-compose.yml` file.
+
+---
+
+### CI Status
+
+[![CI Status](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
 ## Running the Application
 
 To launch the interactive Streamlit dashboard:
