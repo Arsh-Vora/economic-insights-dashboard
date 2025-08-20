@@ -5,3 +5,4 @@ plotly
 streamlit>=1.15
 plotly>=5.10
 ruff
+numpy
