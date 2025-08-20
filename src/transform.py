@@ -5,7 +5,9 @@ PROCESSED_DATA_PATH = "data/processed.csv"
 
 def load_processed_data() -> pd.DataFrame:
     """Loads the processed data from the CSV file."""
-    return pd.read_csv(PROCESSED_DATA_PATH)
+    df = pd.read_csv(PROCESSED_DATA_PATH, dtype={'date': str})
+    df['date'] = pd.to_datetime(df['date'], format='%Y')
+    return df
 
 def forward_fill_per_country(df: pd.DataFrame, metrics: list) -> pd.DataFrame:
     """
