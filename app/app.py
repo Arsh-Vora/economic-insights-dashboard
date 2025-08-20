@@ -1,7 +1,7 @@
 import streamlit as st
 import src.transform as transform
 import src.plots as plots
-import pandas as pd
+# import pandas as pd
 import os
 
 # Set page config
