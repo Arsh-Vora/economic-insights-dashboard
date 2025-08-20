@@ -32,3 +32,13 @@ Key transformations include:
 - **Forward Filling:** Missing data points for each country are filled using the last known value for that specific country, preventing data leakage across different nations.
 - **Z-Score Standardization:** Key economic indicators are normalized on a per-country basis. This allows for comparing a data point to its historical average for that country.
 - **Feature Engineering:** New, insightful metrics such as the "Misery Index" (Unemployment + Inflation) and "Debt-to-Growth Ratio" are created to provide deeper economic insights.
+
+## Running the Application
+
+To launch the interactive Streamlit dashboard:
+
+```bash
+streamlit run app.py
+```
+
+This will open the application in your web browser, allowing you to explore the economic data with interactive controls.
