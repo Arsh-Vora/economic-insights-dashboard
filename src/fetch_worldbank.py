@@ -102,7 +102,6 @@ def main():
     print("\nConcatenating and saving raw data...")
     raw_df = pd.concat(all_dataframes, ignore_index=True)
     
-    raw_df['date'] = pd.to_numeric(raw_df['date'])
     raw_df['value'] = pd.to_numeric(raw_df['value'], errors='coerce')
     
     raw_df.sort_values(by=["countryiso3code", "date"], inplace=True)
