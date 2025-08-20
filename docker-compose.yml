@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  data-fetcher:
+    build: .
+    command: python src/fetch_worldbank.py
+    volumes:
+      - ./data:/app/data
+
+  app:
+    build: .
+    environment:
+      - PYTHONPATH=/app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    depends_on:
+      - data-fetcher
