@@ -53,6 +53,17 @@ To run the application using Docker, ensuring a consistent development environme
 ### CI Status
 
 [![CI Status](https://github.com/your-username/your-repo/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/your-repo/actions/workflows/ci.yml)
+### Enhanced Visualizations and Dashboard Layout
+
+This update significantly enhances the dashboard's analytical capabilities by introducing a more interactive user interface and advanced visualization tools.
+
+*   **Tabbed Interface:** The main dashboard area has been reorganized into two distinct tabs:
+    *   **Time Series Explorer:** Displays the existing time-series comparison charts, allowing users to select multiple countries and a metric for analysis.
+    *   **Metric Relationships:** This new tab provides tools for in-depth exploratory data analysis. Users can select a single country and then choose two metrics to visualize their relationship:
+        *   **Correlation Heatmap:** Visualizes the correlation matrix of key economic indicators for the selected country, helping to identify relationships between different metrics.
+        *   **Scatter Plot:** Allows users to plot any two selected metrics against each other for the chosen country, revealing patterns and correlations.
+
+
 ## Running the Application
 
 To launch the interactive Streamlit dashboard:
