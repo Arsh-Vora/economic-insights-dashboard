@@ -18,10 +18,10 @@ def generate_time_series_plot(df: pd.DataFrame, metric: str, title: str):
     if df.empty:
         return go.Figure()
 
-    # Filter out rows where the metric is NaN to prevent gaps in lines
+    
     df_filtered = df.dropna(subset=[metric])
 
-    # Ensure data is sorted for correct line plotting
+    
     df_sorted = df_filtered.sort_values(by=['country.value', 'date'])
 
     fig = px.line(df_sorted, x='date', y=metric, color='country.value', title=title)
@@ -46,19 +46,19 @@ def generate_correlation_heatmap(df: pd.DataFrame, metrics_to_correlate: list):
     if df.empty or not metrics_to_correlate:
         return go.Figure()
 
-    # Calculate the correlation matrix
-    # Ensure only specified metrics are used and handle potential missing columns gracefully
+    
+    
     valid_metrics = [m for m in metrics_to_correlate if m in df.columns]
     if not valid_metrics:
         return go.Figure()
         
     corr_matrix = df[valid_metrics].corr()
 
-    # Generate the heatmap
+    
     fig = px.imshow(
         corr_matrix,
-        text_auto=True,  # Display correlation values on the map
-        aspect="auto",   # Adjust aspect ratio automatically
+        text_auto=True,  
+        aspect="auto",   
         title="Correlation Matrix of Key Economic Indicators"
     )
     fig.update_layout(
@@ -83,12 +83,12 @@ def generate_scatter_plot(df: pd.DataFrame, x_metric: str, y_metric: str):
     if df.empty or x_metric not in df.columns or y_metric not in df.columns:
         return go.Figure()
 
-    # Generate the scatter plot
+    
     fig = px.scatter(
         df,
         x=x_metric,
         y=y_metric,
-        hover_name='date', # Use 'date' for hover information as per common practice
+        hover_name='date', 
         title=f"{y_metric.replace('_', ' ').title()} vs {x_metric.replace('_', ' ').title()}"
     )
     fig.update_layout(
