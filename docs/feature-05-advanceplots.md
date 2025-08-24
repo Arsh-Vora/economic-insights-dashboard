@@ -1,11 +1,5 @@
 ## Feature 05 — Advanced Visualizations & Dashboard Layout
 
-**Branch:** `feature/advanced-plots` → PR into `dev`
-**Owner:** Arsh
-**Status:** Draft → In Progress → Review → Merged
-
----
-
 ### 1. Goal
 
 Enhance the Streamlit dashboard by introducing more sophisticated visualizations and improving the user interface layout. This feature will add a correlation heatmap and a configurable scatter plot, allowing users to perform more in-depth exploratory data analysis directly within the application.
