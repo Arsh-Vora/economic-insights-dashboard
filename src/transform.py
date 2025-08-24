@@ -42,7 +42,7 @@ def add_engineered_features(df: pd.DataFrame) -> pd.DataFrame:
     df_copy = df.copy()
     df_copy['misery_index'] = df_copy['unemployment_rate'] + df_copy['inflation_cpi']
     df_copy['debt_to_growth_ratio'] = np.where(df_copy['gdp_growth'] != 0, df_copy['gov_debt_pct_gdp'] / df_copy['gdp_growth'], np.nan)
-    df_copy['current_account_balance'] = df_copy['current_account_pct_gdp']
+    df_copy['external_balance_health'] = df_copy['current_account_pct_gdp']
     
     return df_copy
 

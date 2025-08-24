@@ -1,10 +1,6 @@
 ## Feature 04 — Automation & Containerization
 
-**Branch:** `feature/docker-ci` → PR into `dev`
-**Owner:** Lena
-**Status:** Draft → In Progress → Review → Merged
 
----
 
 ### 1. Goal
 
