@@ -53,6 +53,8 @@ def generate_correlation_heatmap(df: pd.DataFrame, metrics_to_correlate: list):
         return go.Figure()
         
     corr_matrix = df[valid_metrics].corr()
+    if corr_matrix.isnull().values.any():
+        return go.Figure()
 
     
     fig = px.imshow(
