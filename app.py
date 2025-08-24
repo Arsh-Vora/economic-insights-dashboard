@@ -6,7 +6,6 @@ import src.config as config
 
 
 sys.path.append(os.path.dirname(__file__))
-import src.transform as transform
 import src.plots as plots
 import os
 
