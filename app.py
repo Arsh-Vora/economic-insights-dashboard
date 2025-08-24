@@ -54,10 +54,11 @@ selected_countries = st.sidebar.multiselect(
 metric_display_map = {m['id']: m['display_name'] for m in config.METRICS_CONFIG}
 metric_ids = [m['id'] for m in config.METRICS_CONFIG]
 
+metric_id_to_display_name = {metric_id: metric_display_map.get(metric_id, metric_id) for metric_id in metric_ids}
 selected_metric_id = st.sidebar.selectbox(
     "Select Metric:",
     options=metric_ids,
-    format_func=lambda id: metric_display_map.get(id, id),
+    format_func=lambda id: metric_id_to_display_name[id],
     index=0
 )
 
@@ -70,14 +71,15 @@ if selected_metric_config:
 tab1, tab2, tab3 = st.tabs(["Time Series Explorer", "Metric Relationships", "About"])
 
 with tab1:
-    st.title(f"{metric_display_map.get(selected_metric_id, selected_metric_id)} Comparison")
+    selected_metric_name = metric_display_map.get(selected_metric_id, selected_metric_id)
+    st.title(f"{selected_metric_name} Comparison")
 
     if not selected_countries:
         st.info("Please select at least one country to display the chart.")
     else:
         filtered_df = df[df['country.value'].isin(selected_countries)]
 
-        plot_title = f"{metric_display_map.get(selected_metric_id, selected_metric_id)} for Selected Countries"
+        plot_title = f"{selected_metric_name} for Selected Countries"
         fig = plots.generate_time_series_plot(filtered_df, selected_metric_id, plot_title)
         if fig is None or len(fig.data) == 0:
             st.info("No data available for the selected criteria.")
